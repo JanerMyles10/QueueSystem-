@@ -1,0 +1,39 @@
+<div class="display-wrapper">
+  <div class="display-container">
+    <div class="loading">
+    </div>
+    <div class="queue-lists">
+      <div class="queue-section">
+        <h3>Priority Lane</h3>
+         <p>Now Serving: {{ nowServing().priority?.number || '---' }}</p>
+        <ul>
+          <li *ngFor="let person of seniorQueueList()">{{ person.number }}</li>
+        </ul>
+      </div>
+
+      <div class="queue-section">
+        <h3>Regular Lane</h3>
+         <p>Now Serving: {{ nowServing().normal?.number || '---' }}</p>
+        <ul>
+          <li *ngFor="let person of normalQueueList()">{{ person.number }}</li>
+        </ul>
+      </div>
+
+      <div class="queue-section">
+        <h3>Walk-in Lane</h3>
+         <p>Now Serving: {{ nowServing().walkin?.number || '---' }}</p>
+        <ul>
+          <li *ngFor="let person of walkinQueueList()">{{ person.number }}</li>
+        </ul>
+      </div>
+
+      <div class="queue-section">
+        <h3>Print Lane</h3>
+         <p>Now Serving: {{ nowServing().print?.number || '---' }}</p>
+        <ul>
+          <li *ngFor="let person of printQueueList()">{{ person.number }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

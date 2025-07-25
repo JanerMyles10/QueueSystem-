@@ -1,0 +1,74 @@
+/* === Navbar Main Style === */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: auto;
+  padding: 10px 20px;
+  background-color: #0c0f30;
+  color: rgb(6, 1, 1);
+  font-family: 'Segoe UI', sans-serif;
+  font-size: x-large;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+/* === Left Side Button (Back) === */
+.nav-left {
+  color: rgb(27, 255, 236);
+  cursor: pointer;
+  transition: color 0.2s ease;
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.nav-left:hover {
+  color: #1ab3c7;
+}
+
+/* === Logo Link === */
+.logo {
+  color: rgb(27, 255, 168);
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  transition: color 0.2s ease;
+}
+
+.logo:hover {
+  color: #21a9fd;
+}
+
+/* === Right Side (Login Link) === */
+.nav-right .staff {
+  color: #66f3ec;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: x-large;
+  font-weight: bold;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-right .staff:hover {
+  color: #21a9fd;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* === Responsive Design for Small Screens === */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .nav-left,
+  .logo,
+  .nav-right .staff {
+    font-size: large;
+  }
+}

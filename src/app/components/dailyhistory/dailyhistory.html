@@ -1,0 +1,18 @@
+<h2>Queue History</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Number</th>
+      <th>Type</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let entry of history">
+      <td>{{ entry.number }}</td>
+      <td>{{ entry.type }}</td>
+      <td>{{ entry.status }}</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,30 @@
+<div class="queue-container">
+  <div class="queue-section priority">
+    <h3>Teller 1 Priority👤</h3>
+    <button (click)="serveNext('priority')">Next</button>
+    <button (click)="undoServe('priority')">Stop Queue</button>
+  </div>
+
+  <div class="queue-section normal">
+    <h3>Teller 2 Normal👤</h3>
+    <button (click)="serveNext('normal')">Next</button>
+    <button (click)="undoServe('normal')">Stop Queue</button>
+  </div>
+
+  <div class="queue-section walkin">
+    <h3>Teller 3 Walkin👤</h3>
+    <button (click)="serveNext('walkin')">Next</button>
+    <button (click)="undoServe('walkin')">Stop Queue</button>
+
+  </div>
+
+  <div class="queue-section print">
+    <h3>Teller 4 Print👤</h3>
+    <button (click)="serveNext('print')">Next</button>
+    <button (click)="undoServe('print')">Stop Queue</button>
+  </div>
+</div>
+
+<div class="bottom-dashboard-link">
+  <a routerLink="/dashboard">⬅️ Back to Dashboard</a>
+</div>

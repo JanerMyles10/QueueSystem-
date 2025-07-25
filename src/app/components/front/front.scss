@@ -1,0 +1,130 @@
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.entry-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+
+  h3 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .processing-message,
+  .confirmation {
+    margin-top: 2rem;
+    font-size: 1.2rem;
+  }
+  .processing-message {
+    margin-top: 2rem;
+    font-size: 1.2rem;
+    height: 120px;
+    width: 120px;
+    border: 5px solid rgb(55, 243, 234);
+    border-radius: 3px;
+    box-shadow: 0 0 8px cyan, 0 0 8px cyan inset;
+    animation: loading 2s ease-in infinite;
+  }
+}
+
+
+
+.entry-button {
+  flex: 1 1 calc(50% - 30px);
+  width: 300px;
+  height: 120px;
+  font-size: 2rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  color: white;
+  transition: transform 0.2s, background-color 0.3s;
+   animation:
+    shake 0.5s infinite,
+    glow 2s infinite,
+    ;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+
+  &.senior {
+    background-color: #e67e22;
+
+    &:hover {
+      background-color: #d35400;
+    }
+  }
+
+  &.normal {
+    background-color: #3498db;
+
+    &:hover {
+      background-color: #2980b9;
+    }
+  }
+
+  &.walkin {
+    background-color: #2dff53;
+
+    &:hover {
+      background-color: #27ae60;
+    }
+  }
+
+  &.print {
+    background-color: #9b59b6;
+
+    &:hover {
+      background-color: #8e44ad;
+    }
+  }
+
+  @keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+  @keyframes glow {
+  0% {
+    box-shadow: 0 0 5px #f4f5f5;
+  }
+  50% {
+    box-shadow: 0 0 20px #f3f71b;
+  }
+  100% {
+    box-shadow: 0 0 5px #fbff21;
+  }
+}
+
+  @keyframes loading {
+      0%{
+          transform: rotateX(0deg) rotateY(0deg)
+          rotateZ(0deg);
+      }
+      33%{
+        transform: rotateX(0deg)  rotataeY(0deg)
+        rotateZ(0deg);
+      }
+      67%{
+        transform: rotateX(180deg)  rotateY(180deg)
+        rotateZ(0deg);
+      }
+      100%{
+        transform: rotateX(180deg)  rotateY(180deg)
+        rotateZ(180deg);
+      }
+  }
+}
