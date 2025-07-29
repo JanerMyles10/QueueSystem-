@@ -29,7 +29,14 @@ export class Statsoverview implements OnInit {
 
   ngOnInit(): void {
     this.Sample.getQueueCounts().subscribe(data => {
-      this.barChartData.labels = data.map(item => item._id.toUpperCase());
+      const labelMap: Record<string, string> = {
+        priority: 'Priority',
+        normal: 'Normal',
+        walkin: 'Walk-in',
+        print: 'Print'
+      };
+
+      this.barChartData.labels = data.map(item => labelMap[item._id] || item._id);
       this.barChartData.datasets[0].data = data.map(item => item.count);
     });
   }

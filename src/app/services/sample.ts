@@ -40,7 +40,7 @@ export class Sample {
 }
 
 getQueueCounts(): Observable<{ _id: string; count: number }[]> {
-  return this.http.get<{ _id: string; count: number }[]>(`${this.baseUrl}/queue/counts`);
+  return this.http.get<{ _id: string; count: number }[]>(`${this.baseUrl}/count`);
 }
 
 }
