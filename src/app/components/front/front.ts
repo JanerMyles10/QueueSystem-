@@ -28,7 +28,7 @@ export class Front {
       normal: 'Reg',
       walkin: 'Walk',
       print: 'Print'
-    };  
+    };
 
     const prefix = prefixMap[type];
     const nextNumber = `${prefix}-${Math.floor(Math.random() * 100)}`;

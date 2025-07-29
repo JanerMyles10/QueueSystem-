@@ -39,4 +39,8 @@ export class Sample {
   return this.http.get(`${this.baseUrl}/stats`);
 }
 
+getQueueCounts(): Observable<{ _id: string; count: number }[]> {
+  return this.http.get<{ _id: string; count: number }[]>(`${this.baseUrl}/queue/counts`);
+}
+
 }

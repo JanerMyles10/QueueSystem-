@@ -108,4 +108,21 @@ router.get('/stats', async (req, res) => {
 });
 
 
+router.get('/count', async (req, res) => {
+  try {
+    const counts = await Queue.aggregate([
+      {
+        $group: {
+          _id: "$lane",
+          count: { $sum: 1 }
+        }
+      }
+    ]);
+    res.json(counts);
+  } catch (error) {
+    res.status(500).json({ message: 'Error counting queues', error });
+  }
+});
+
+
 module.exports = router;

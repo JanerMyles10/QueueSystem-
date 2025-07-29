@@ -47,3 +47,50 @@
 .card:nth-child(5) p {
   color: #c62828; /* Penalty in red */
 }
+
+.back {
+  padding: 15px;
+  background-color: #f9f9f9;
+}
+
+.back {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 12px 20px;
+  background-color: #f1f1f1;
+  border-bottom: 1px solid #ccc;
+}
+
+.back-button {
+  color: #007bff;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 8px 16px;
+  border: 1px solid #007bff;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: transparent;
+  transition: 0.3s;
+}
+
+.back-button:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.logo {
+  font-size: 18px;
+  text-decoration: none;
+  color: #333;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.logo:hover {
+  background-color: #e0e0e0;
+  color: #000;
+}
+
+

@@ -2,11 +2,12 @@ import { Component, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Sample } from '../../services/sample';
 import { QueueEntry, NowServingMap} from '../../type/queue';
+import { Header } from "../header/header";
 
 @Component({
   selector: 'app-display',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, Header],
   templateUrl: './display.html',
   styleUrls: ['./display.scss'],
   providers: [Sample]

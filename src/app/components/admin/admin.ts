@@ -3,12 +3,13 @@ import { Component, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { QueueEntry, QueueType, NowServingMap } from '../../type/queue';
 import { RouterModule } from '@angular/router';
+import { Header } from "../header/header";
 
 
 @Component({
   selector: 'app-admin-page',
   standalone: true,
-  imports: [CommonModule,RouterModule],
+  imports: [CommonModule, RouterModule, Header],
   templateUrl: './admin.html',
   styleUrls: ['./admin.scss'],
   providers: [Sample]
