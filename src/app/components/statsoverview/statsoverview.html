@@ -1,6 +1,26 @@
 <div class="container">
   <h2>Queue Lane Statistics</h2>
 
+  <!-- View Selector Buttons -->
+  <div class="view-selector">
+    <button
+      [class.active]="selectedView === 'daily'"
+      (click)="selectedView = 'daily'; loadChartData()">
+      Daily
+    </button>
+    <button
+      [class.active]="selectedView === 'weekly'"
+      (click)="selectedView = 'weekly'; loadChartData()">
+      Weekly
+    </button>
+    <button
+      [class.active]="selectedView === 'monthly'"
+      (click)="selectedView = 'monthly'; loadChartData()">
+      Monthly
+    </button>
+  </div>
+
+  <!-- Bar Chart -->
   <div style="display: block;">
     <canvas baseChart
       [data]="barChartData"

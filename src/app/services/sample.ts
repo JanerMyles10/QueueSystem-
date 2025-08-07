@@ -43,4 +43,12 @@ getQueueCounts(): Observable<{ _id: string; count: number }[]> {
   return this.http.get<{ _id: string; count: number }[]>(`${this.baseUrl}/count`);
 }
 
+getWeeklyQueueCounts(): Observable<{ _id: number; count: number }[]> {
+  return this.http.get<{ _id: number; count: number }[]>(`${this.baseUrl}/stats/weekly`);
+}
+
+getMonthlyQueueCounts(): Observable<{ _id: number; count: number }[]> {
+  return this.http.get<{ _id: number; count: number }[]>(`${this.baseUrl}/stats/monthly`);
+}
+
 }

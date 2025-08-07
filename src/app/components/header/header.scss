@@ -1,25 +1,16 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 .navbar {
-  width: 100%; /* Make it full width */
+  width: 50; /* Make it full width */
   padding: 10px 20px;
   background-color: #0c0f30;
   color: rgb(6, 1, 1);
   font-family: 'Segoe UI', sans-serif;
-  font-size: x-large;
+  font-size: large;
   font-weight: bold;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-radius: 0; /* You can set to 8px if you still want rounded edges */
 }
 
-/* === Left Side Button (Back) === */
 .nav-left {
   color: rgb(27, 255, 236);
   cursor: pointer;
@@ -49,9 +40,9 @@
 .nav-right .staff {
   color: #66f3ec;
   text-decoration: none;
-  padding: 6px 12px;
+  padding: 4px 8px;
   border-radius: 4px;
-  font-size: x-large;
+  font-size: large;
   font-weight: bold;
   transition: background-color 0.2s ease, color 0.2s ease;
 }

@@ -5,24 +5,13 @@ html, body {
   overflow: hidden;
 }
 
-.display-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #ffffff;
-  padding: 1rem;
-}
-
-
 .display-container {
-  width: 100%;
-  max-width: 1200px;
+  margin: 40px auto;
+  max-width: 1000px;
   text-align: center;
   padding: 2rem;
   font-family: 'Segoe UI', sans-serif;
   background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .now-serving-box {
@@ -39,6 +28,7 @@ html, body {
 .queue-lists {
   display: flex;
   justify-content: space-between;
+  background-color: #59e6ff;
   gap: 1.5rem;
 }
 
@@ -75,36 +65,43 @@ li {
   position: relative;
   width: 100px;
   height: 100px;
-  margin: 150px auto;
+  margin: 80px auto;
   border-radius: 50%;
   background: radial-gradient(circle at center, #00ffcc, #006b5e);
   box-shadow: 0 0 20px #00ffcc, 0 0 40px #00ffcc66;
   animation: breathe 2.5s ease-in-out infinite;
 }
 
-.loading::before,
+.loading::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 140px;
+  height: 30px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, #fff47888, #ffd70033);
+  box-shadow:
+    0 0 10px #fff8a6,
+    0 0 20px #fff8a6,
+    0 0 40px #fff8a6,
+    inset 0 0 10px #fff8a6;
+  transform: translate(-50%, -50%) rotateZ(15deg);
+  opacity: 0.9;
+}
+
+
 .loading::after {
   content: '';
   position: absolute;
   width: 20px;
   height: 20px;
-  background: #83ff83;
+  background: #8dffab;
   border-radius: 50%;
-  box-shadow: 0 0 10px #83ff83aa;
-}
-
-.loading::before {
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -150%);
-  animation: orbit1 4s linear infinite;
-}
-
-.loading::after {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, 150%);
-  animation: orbit2 4s linear infinite;
+  transform-origin: -60px center;
+  animation: orbitMoon 4s linear infinite;
 }
 
 @keyframes breathe {
@@ -118,21 +115,11 @@ li {
   }
 }
 
-@keyframes orbit1 {
+@keyframes orbitMoon {
   0% {
-    transform: rotate(0deg) translateY(-150%) rotate(0deg);
+    transform: rotate(0deg);
   }
   100% {
-    transform: rotate(360deg) translateY(-150%) rotate(-360deg);
+    transform: rotate(360deg);
   }
 }
-
-@keyframes orbit2 {
-  0% {
-    transform: rotate(0deg) translateY(150%) rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg) translateY(150%) rotate(-360deg);
-  }
-}
-

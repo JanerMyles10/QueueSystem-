@@ -113,7 +113,7 @@ router.get('/count', async (req, res) => {
     const counts = await Queue.aggregate([
       {
         $group: {
-          _id: "$type", 
+          _id: "$type",
           count: { $sum: 1 }
         }
       }
@@ -124,6 +124,43 @@ router.get('/count', async (req, res) => {
   }
 });
 
+// GET /api/queue/stats/weekly
+router.get('/stats/weekly', async (req, res) => {
+  try {
+    const weeklyCounts = await Queue.aggregate([
+      {
+        $group: {
+          _id: { $week: "$createdAt" }, // You can also use $isoWeek
+          count: { $sum: 1 }
+        }
+      },
+      { $sort: { _id: 1 } }
+    ]);
+
+    res.json(weeklyCounts);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch weekly stats' });
+  }
+});
+
+// GET /api/queue/stats/monthly
+router.get('/stats/monthly', async (req, res) => {
+  try {
+    const monthlyCounts = await Queue.aggregate([
+      {
+        $group: {
+          _id: { $month: "$createdAt" },
+          count: { $sum: 1 }
+        }
+      },
+      { $sort: { _id: 1 } }
+    ]);
+
+    res.json(monthlyCounts);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch monthly stats' });
+  }
+});
 
 
 module.exports = router;

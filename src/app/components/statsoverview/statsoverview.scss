@@ -1,7 +1,29 @@
 .container {
   max-width: 800px;
   margin: auto;
-  padding: 1rem;
+  text-align: center;
+}
+
+.view-selector {
+  margin-bottom: 20px;
+
+  button {
+    margin: 0 5px;
+    padding: 8px 16px;
+    background-color: #ddd;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &.active {
+      background-color: #007bff;
+      color: white;
+    }
+
+    &:hover:not(.active) {
+      background-color: #bbb;
+    }
+  }
 }
 
 canvas {

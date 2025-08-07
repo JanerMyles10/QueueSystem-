@@ -1,12 +1,16 @@
+
 <div class="entry-page">
   <h3>PLEASE TAP TO GET A NUMBER</h3>
 
-  <div class="button-group" *ngIf="!processing && !success">
+  @if (!processing && !success) {
+  <div class="button-group">
     <button class="entry-button senior" (click)="enqueue('priority')">👩🏼‍🦽‍➡️ Priority</button>
     <button class="entry-button normal" (click)="enqueue('normal')">🙎🏼‍♂️ Regular</button>
     <button class="entry-button walkin" (click)="enqueue('walkin')">🚶🏾 Walk In</button>
     <button class="entry-button print" (click)="enqueue('print')">🗳 Print</button>
   </div>
+}
+
 
   <div class="processing-message" *ngIf="processing">
   </div>
