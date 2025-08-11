@@ -20,35 +20,22 @@ export class Front {
   constructor(private Sample: Sample, private router: Router) {}
 
   enqueue(type: QueueType) {
-    this.processing = true;
-    this.success = false;
+  this.processing = true;
+  this.success = false;
 
-    const prefixMap: Record<QueueType, string> = {
-      priority: 'Prio',
-      normal: 'Reg',
-      walkin: 'Walk',
-      print: 'Print'
-    };
+  const entryData = { type };
 
-    const prefix = prefixMap[type];
-    const nextNumber = `${prefix}-${Math.floor(Math.random() * 100)}`;
+  setTimeout(() => {
+    this.Sample.addToQueue(entryData).subscribe((res) => {
+      this.processing = false;
+      this.success = true;
+      this.addedEntry = res.entry; // backend returns the number
+      this.printTicket(this.addedEntry);
+      setTimeout(() => this.router.navigate(['/display']), 3000);
+    });
+  }, 2000);
+}
 
-    const entry: QueueEntry = {
-      number: nextNumber,
-      type,
-      status: 'waiting'
-    };
-
-    setTimeout(() => {
-      this.Sample.addToQueue(entry).subscribe(() => {
-        this.processing = false;
-        this.success = true;
-        this.addedEntry = entry;
-        this.printTicket(entry);
-        setTimeout(() => this.router.navigate(['/display']), 3000);
-      });
-    }, 2000);
-  }
 
 printTicket(entry: QueueEntry) {
   const printWindow = window.open('', '_blank', 'width=400,height=600');

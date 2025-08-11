@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Queue = require('../models/Queue');
+const getNextSequence = require('../utils/getNextSequence');
 
 
 let nowServing = {
@@ -20,13 +21,72 @@ router.get('/', async (req, res) => {
   }
 });
 
+async function getNextNumber(prefix){
+  const today = new Date().toISOString().split('T')[0];
+
+  let counter = await Counter.findOne({ prefix, date: today});
+
+  if(!counter){
+    counter = new Counter ({ prefix, date: today, value:1})
+  }else{
+    counter.value+=1;
+  }
+
+  await counter.save();
+  return `${prefix}-${counter.value}`;
+}
+
+router.post('/queue', async (req, res) => {
+  try {
+    const prefix = req.body.type === 'priority' ? 'PRIO' : 'NORM';
+    const ticketNumber = await getNextNumber(prefix);
+
+    const newEntry = new Queue({
+      type: req.body.type,
+      ticketNumber
+    });
+
+    await newEntry.save();
+    res.json(newEntry);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
 
 router.post('/', async (req, res) => {
   try {
-    const newEntry = new Queue(req.body);
+    const { type } = req.body;
+
+    // mapping type → prefix
+    const prefixMap = {
+      priority: 'Prio',
+      normal: 'Reg',
+      walkin: 'Walk',
+      print: 'Print'
+    };
+
+    if (!prefixMap[type]) {
+      return res.status(400).json({ error: 'Invalid queue type' });
+    }
+
+    // get next sequential number for this type
+    const seqNum = await getNextSequence(type);
+    const number = `${prefixMap[type]}-${seqNum}`;
+
+    const newEntry = new Queue({
+      number,
+      type,
+      status: 'waiting'
+    });
+
     await newEntry.save();
-    res.status(201).json({ message: 'Added to queue' });
+
+    res.status(201).json({
+      message: 'Added to queue',
+      entry: newEntry
+    });
   } catch (err) {
+    console.error(err);
     res.status(500).json({ error: 'Failed to add to queue' });
   }
 });

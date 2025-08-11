@@ -15,9 +15,12 @@ export class Sample {
     return this.http.get<QueueEntry[]>(this.baseUrl);
   }
 
-  addToQueue(entry: QueueEntry): Observable<any> {
-    return this.http.post(this.baseUrl, entry);
-  }
+  addToQueue(entryData: { type: QueueType }) {
+  return this.http.post<{ message: string; entry: QueueEntry }>(
+    this.baseUrl,
+    entryData
+  );
+}
 
   markAsServed(number: string): Observable<any> {
     return this.http.patch(`${this.baseUrl}/${number}/serve`, {});
